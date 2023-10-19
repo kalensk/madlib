@@ -165,7 +165,7 @@ def __logregr_validate_args(schema_madlib, tbl_source, tbl_output, dep_col,
     if not ind_col or ind_col.lower() in ('null', ''):
         plpy.error("Logregr error: Invalid independent column name!")
 
-    if grouping_col is not None:
+    if grouping_col is not None and grouping_col.strip():
         if grouping_col == '':
             plpy.error("Logregr error: Invalid grouping columns name!")
         if not columns_exist_in_table(

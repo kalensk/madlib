@@ -41,7 +41,7 @@ def linregr_train(schema_madlib, source_table, out_table,
                        dependent_varname, independent_varname,
                        grouping_cols, heteroskedasticity_option)
 
-        group_col_list = ''if grouping_cols is None else _string_to_array_with_quotes(
+        group_col_list = '' if grouping_cols is None or not grouping_cols.strip() else _string_to_array_with_quotes(
             grouping_cols)
 
         group_str = '' if grouping_cols is None else 'GROUP BY %s' % get_table_qualified_col_str(source_table,
